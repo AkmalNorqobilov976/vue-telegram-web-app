@@ -50,9 +50,15 @@ export default defineComponent({
 
          const { 
             BackButton,
-            onShowHideBackButton 
+            onShowHideBackButton,
+            onBackButtonClick 
         } = useBackButton()
 
+
+        onBackButtonClick(() => {
+            alert('Backbutton clicked')
+        });
+        
         return {
             MainButton,
             onShowHide,
