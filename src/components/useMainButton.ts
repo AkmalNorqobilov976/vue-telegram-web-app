@@ -31,7 +31,9 @@ export const useMainButton = () => {
         MainButton.value.disable = value;
         WebAppMainButton.disable = value;
         if (WebAppMainButton.isActive && MainButton.value.disable) {
-            WebAppMainButton.disable();
+            WebAppMainButton.setParams({
+                disable: MainButton.value.disable
+            });
         } else if (!WebAppMainButton.isActive && !MainButton.value.disable) {
             WebAppMainButton.enable();
         }
