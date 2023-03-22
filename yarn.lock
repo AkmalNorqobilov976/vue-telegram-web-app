@@ -6026,6 +6026,11 @@ vue-loader@^17.0.0:
     hash-sum "^2.0.0"
     loader-utils "^2.0.0"
 
+vue-next-select@^2.10.5:
+  version "2.10.5"
+  resolved "https://registry.yarnpkg.com/vue-next-select/-/vue-next-select-2.10.5.tgz#f8b64d6546cc1bead05010448ea9239e2e547d25"
+  integrity sha512-O77bdbp2wj/Dkpd8XFv21EYXI8UtqgTxnKBsycCd2pUe4SAxKsT1h3MT+b7tuyGQV5udMpBYaUE445Z1VdHyUw==
+
 vue-style-loader@^4.1.0, vue-style-loader@^4.1.3:
   version "4.1.3"
   resolved "https://registry.yarnpkg.com/vue-style-loader/-/vue-style-loader-4.1.3.tgz#6d55863a51fa757ab24e89d9371465072aa7bc35"
