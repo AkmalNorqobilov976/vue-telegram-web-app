@@ -1,6 +1,5 @@
 <template>
     <div id="app">
-        {{ MainButton }}
         <Btn @click="onShowHide(!MainButton.show)"> {{ MainButton.show ? 'Hide Main Button' : 'Show Main Button' }} </Btn>
         <Btn @click="onShowHideProgress(!MainButton.progress)">
             {{ MainButton.progress
@@ -61,7 +60,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive } from 'vue';
+import { defineComponent, onMounted, reactive } from 'vue';
 import Btn from './components/Btn.vue';
 import { useMainButton } from '@/composables/useMainButton';
 import { useBackButton } from '@/composables/useBackButton';
@@ -77,7 +76,10 @@ export default defineComponent({
 
         // const hapTickNotificationOccurredType = ref(<Parameters<NotificationOccurredFunction>[0]>('error'));
         // const hapTickImpactOccurredFunctionStyle = ref(<Parameters<ImpactOccurredFunction>[0]>('light'))
-
+        onMounted(() => {
+            window.Telegram.WebApp.expand();
+        })
+        
         const hapTick = reactive({
             type: 'error' as TypeType,
             style: 'light' as StyleType
