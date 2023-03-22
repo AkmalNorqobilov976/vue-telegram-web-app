@@ -40,6 +40,17 @@
         ></VueSelect>
         <Btn @click="onNotificationOccurred(hapTick.type)">
             Notification Occurred </Btn>
+        
+        <Btn @click="useShowPopup()({
+            title: 'title',
+            message: 'Message of Popup',
+            buttons: [
+                { id: 'yes', type: 'ok' },
+                { id: 'no', type: 'cancel' },
+                { id: 'default', type: 'default' }
+            ],
+        })">Show Popup </Btn>
+
     </div>
 </template>
 
@@ -48,6 +59,8 @@ import { defineComponent, reactive } from 'vue';
 import Btn from './components/Btn.vue';
 import { useMainButton } from '@/composables/useMainButton';
 import { useBackButton } from '@/composables/useBackButton';
+import useShowPopup from '@/composables/useShowPopup';
+
 import { StyleType, TypeType, useHapTickFeedback } from '@/composables/useHapTickFeedback'
 import TextField from './components/TextField.vue';
 
@@ -106,7 +119,11 @@ export default defineComponent({
 
             onImpactOccured,
             onNotificationOccurred,
-            hapTick
+            hapTick,
+
+
+            // popup
+            useShowPopup
         }
     }
 })
