@@ -25,6 +25,7 @@ $blue: rgb(0, 204, 255);
         border: none;
         outline: none;
         padding: 5px 10px;
+        transition: .2s all ease;
         &:hover {
             background: rgba($color: $blue, $alpha: .6);
         }

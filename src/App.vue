@@ -1,11 +1,12 @@
 <template>
     <div>
-        <Btn @click="MainButton.disable = !MainButton.disable"> {{ MainButton.disable }} </Btn>
+        {{ MainButton }}
+        <Btn @click="onToggleDisable(!MainButton.disable)"> {{ MainButton.disable }} </Btn>
     </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, watch } from 'vue';
 import Btn from './components/Btn.vue';
 import { useMainButton } from './components/useMainButton';
 
@@ -13,11 +14,15 @@ export default defineComponent({
     name: "App",
     components: { Btn },
     setup() {
-        const { MainButton } = useMainButton();
-
+        const { MainButton, onToggleDisable } = useMainButton();
+        watch(MainButton, (newValue) => {
+            console.log(newValue);
+            
+        })
 
         return {
-            MainButton
+            MainButton,
+            onToggleDisable
         }
     }
 })
