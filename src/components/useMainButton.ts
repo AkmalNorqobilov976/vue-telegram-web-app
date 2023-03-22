@@ -20,16 +20,21 @@ export const useMainButton = () => {
     watch(MainButton.value.progress, (newValue) => {
         WebAppMainButton.progress = newValue;
     });
-    
-    
-    
+
+
+
     watch(MainButton.value.textColor, (newValue) => {
         WebAppMainButton.textColor = newValue;
     });
-    
+
     const onToggleDisable = (value: boolean) => {
         MainButton.value.disable = value;
         WebAppMainButton.disable = value;
+        if (WebAppMainButton.isActive && MainButton.value.disable) {
+            WebAppMainButton.disable();
+        } else if (!WebAppMainButton.isActive && !MainButton.value.disable) {
+            WebAppMainButton.enable();
+        }
     }
     return {
         MainButton,
