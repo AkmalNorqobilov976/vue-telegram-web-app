@@ -29,11 +29,11 @@ export const useMainButton = () => {
 
     const onToggleDisable = (value: boolean) => {
         MainButton.value.disable = value;
-        if (WebAppMainButton.isActive && MainButton.value.disable) {
-            WebAppMainButton.disable();
-        } else if (!WebAppMainButton.isActive && !MainButton.value.disable) {
-            WebAppMainButton.enable();
-        }
+        console.log(MainButton.value.disable);
+        
+        WebAppMainButton.setParams({
+            is_active: MainButton.value.disable
+        });
     }
     return {
         MainButton,
