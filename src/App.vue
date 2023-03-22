@@ -24,23 +24,15 @@
                 : 'Show Back Button'
             }} </Btn>
 
-        <VueSelect 
-            v-model="hapTick.style"
-            class="mt-5 select" 
-            placeholder="Impact Occured"
-            :options="['light', 'medium', 'heavy', 'rigid', 'soft']"
-        ></VueSelect>
+        <VueSelect v-model="hapTick.style" class="mt-5 select" placeholder="Impact Occured"
+            :options="['light', 'medium', 'heavy', 'rigid', 'soft']"></VueSelect>
         <Btn @click="onImpactOccured(hapTick.style)">
             Impact Occured </Btn>
-        <VueSelect 
-            v-model="hapTick.type"
-            class="mt-5 select" 
-            placeholder="Notification Occurred" 
-            :options="['error', 'success', 'warning']"
-        ></VueSelect>
+        <VueSelect v-model="hapTick.type" class="mt-5 select" placeholder="Notification Occurred"
+            :options="['error', 'success', 'warning']"></VueSelect>
         <Btn @click="onNotificationOccurred(hapTick.type)">
             Notification Occurred </Btn>
-        
+
         <Btn @click="useShowPopup()({
             title: 'title',
             message: 'Message of Popup',
@@ -51,6 +43,20 @@
             ],
         })">Show Popup </Btn>
 
+
+        <Btn @click="() =>
+            showQrPopup(
+                {
+                    text: 'Showed Qr Scaner Popup',
+                },
+                text => {
+                    closeQrPopup();
+                    useShowPopup()({
+                        message: text,
+                    });
+                },
+            )">Show Qr Scanner Popup </Btn>
+
     </div>
 </template>
 
@@ -60,7 +66,7 @@ import Btn from './components/Btn.vue';
 import { useMainButton } from '@/composables/useMainButton';
 import { useBackButton } from '@/composables/useBackButton';
 import useShowPopup from '@/composables/useShowPopup';
-
+import useScanQRPopup from '@/composables/useScanQRPopup'
 import { StyleType, TypeType, useHapTickFeedback } from '@/composables/useHapTickFeedback'
 import TextField from './components/TextField.vue';
 
@@ -68,7 +74,7 @@ export default defineComponent({
     name: "App",
     components: { Btn, TextField },
     setup() {
-        
+
         // const hapTickNotificationOccurredType = ref(<Parameters<NotificationOccurredFunction>[0]>('error'));
         // const hapTickImpactOccurredFunctionStyle = ref(<Parameters<ImpactOccurredFunction>[0]>('light'))
 
@@ -76,7 +82,6 @@ export default defineComponent({
             type: 'error' as TypeType,
             style: 'light' as StyleType
         });
-
 
         const {
             MainButton,
@@ -88,7 +93,6 @@ export default defineComponent({
             onSetTextColor
         } = useMainButton();
 
-
         const {
             BackButton,
             onShowHideBackButton,
@@ -99,10 +103,12 @@ export default defineComponent({
             onImpactOccured,
             onNotificationOccurred
         } = useHapTickFeedback();
+
         onBackButtonClick(() => {
             alert('Backbutton clicked')
         });
 
+        const [showQrPopup, closeQrPopup] = useScanQRPopup();
         return {
             MainButton,
             onShowHide,
@@ -123,7 +129,12 @@ export default defineComponent({
 
 
             // popup
-            useShowPopup
+            useShowPopup,
+
+            // Scan QR popup
+            showQrPopup,
+            closeQrPopup
+
         }
     }
 })
@@ -138,7 +149,7 @@ $blue: rgb(0, 204, 255);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     color: #2c3e50;
-    margin-top: 20px;
+    margin: 20px 0;
 
     .mt-5 {
         margin-top: 20px;
@@ -159,4 +170,5 @@ $blue: rgb(0, 204, 255);
             border: rgba($color: $blue, $alpha: .4) 2px solid;
         }
     }
-}</style>
+}
+</style>
