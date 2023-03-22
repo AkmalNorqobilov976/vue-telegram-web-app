@@ -18,6 +18,11 @@
         <TextField type="color" value="#fff" @input="onSetColor($event.target.value)" />
         <p class="mt-5">Text color</p>
         <TextField type="color" value="#fff" @input="onSetTextColor($event.target.value)" />
+        <Btn @click="onShowHideBackButton(!BackButton.show)"> 
+        {{ BackButton.show 
+            ? 'Hide Back Button' 
+            : 'Show Back Button' 
+        }} </Btn>
     </div>
 </template>
 
@@ -25,6 +30,7 @@
 import { defineComponent, ref, watch } from 'vue';
 import Btn from './components/Btn.vue';
 import { useMainButton } from '@/composables/useMainButton';
+import { useBackButton } from '@/composables/useBackButton';
 import TextField from './components/TextField.vue';
 
 export default defineComponent({
@@ -40,10 +46,12 @@ export default defineComponent({
             onSetColor,
             onSetTextColor
          } = useMainButton();
-        watch(MainButton, (newValue) => {
-            console.log(newValue);
-            
-        })
+         
+
+         const { 
+            BackButton,
+            onShowHideBackButton 
+        } = useBackButton()
 
         return {
             MainButton,
@@ -52,7 +60,11 @@ export default defineComponent({
             onDisableEnable,
             onSetText,
             onSetColor,
-            onSetTextColor
+            onSetTextColor,
+
+            // back button
+            BackButton,
+            onShowHideBackButton
         }
     }
 })
