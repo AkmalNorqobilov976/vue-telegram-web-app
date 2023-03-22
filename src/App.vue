@@ -1,7 +1,7 @@
 <template>
     <div>
         {{ MainButton }}
-        <Btn @click="onShowHide(!MainButton.show)"> {{ MainButton.disable }} </Btn>
+        <Btn @click="onToggleDisable(!MainButton.show)"> {{ MainButton.disable }} </Btn>
     </div>
 </template>
 
@@ -14,7 +14,7 @@ export default defineComponent({
     name: "App",
     components: { Btn },
     setup() {
-        const { MainButton, onShowHide } = useMainButton();
+        const { MainButton, onToggleDisable } = useMainButton();
         watch(MainButton, (newValue) => {
             console.log(newValue);
             
@@ -22,7 +22,7 @@ export default defineComponent({
 
         return {
             MainButton,
-            onShowHide
+            onToggleDisable
         }
     }
 })
