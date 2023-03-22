@@ -11,9 +11,10 @@ export const useMainButton = () => {
         color: (WebApp.color as string),
         textColor: WebApp.textColor,
         onClick: WebApp.onClick,
+        show: false
     });
 
-    const onToggleDisable = (value: boolean) => {
+    const onShowHide = (value: boolean) => {
         MainButton.value.show = value;
         console.log(MainButton.value.show);
         if (WebAppMainButton.isActive && MainButton.value.disable) {
@@ -24,6 +25,6 @@ export const useMainButton = () => {
     }
     return {
         MainButton,
-        onToggleDisable
+        onShowHide
     }
 }

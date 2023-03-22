@@ -1,20 +1,20 @@
 <template>
     <div>
         {{ MainButton }}
-        <Btn @click="onToggleDisable(!MainButton.show)"> {{ MainButton.show }} </Btn>
+        <Btn @click="onShowHide(!MainButton.show)"> {{ MainButton.show }} </Btn>
     </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, watch } from 'vue';
 import Btn from './components/Btn.vue';
-import { useMainButton } from './components/useMainButton';
+import { useMainButton } from '@/composables/useMainButton';
 
 export default defineComponent({
     name: "App",
     components: { Btn },
     setup() {
-        const { MainButton, onToggleDisable } = useMainButton();
+        const { MainButton, onShowHide } = useMainButton();
         watch(MainButton, (newValue) => {
             console.log(newValue);
             
@@ -22,7 +22,7 @@ export default defineComponent({
 
         return {
             MainButton,
-            onToggleDisable
+            onShowHide
         }
     }
 })
