@@ -1,7 +1,7 @@
 export interface ShowPopupButton extends Record<string, unknown> {
-    id?: string;
-    type?: 'default' | 'ok' | 'close' | 'cancel' | 'destructive' | string;
-    text?: string;
+    id: string;
+    type: 'default' | 'ok' | 'close' | 'cancel' | 'destructive' | string;
+    text: string;
 }
 
 export interface ShowPopupParams extends Record<string, unknown> {

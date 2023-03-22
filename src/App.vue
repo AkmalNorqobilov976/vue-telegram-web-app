@@ -45,9 +45,9 @@
             title: 'title',
             message: 'Message of Popup',
             buttons: [
-                { id: 'yes', type: 'ok' },
-                { id: 'no', type: 'cancel' },
-                { id: 'default', type: 'default' }
+                { id: 'yes', text: 'Yes', type: 'ok' },
+                { id: 'no', text: 'No', type: 'cancel' },
+                { id: 'default', text: 'Default', type: 'default' }
             ],
         })">Show Popup </Btn>
 
