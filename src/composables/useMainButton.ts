@@ -16,8 +16,8 @@ export const useMainButton = () => {
 
     const onShowHide = (value: boolean) => {
         MainButton.value.show = value;
-        WebAppMainButton.show();
         if (MainButton.value.show) {
+            WebAppMainButton.show();
         } else if (!MainButton.value.show) {
             WebAppMainButton.hide();
         }
