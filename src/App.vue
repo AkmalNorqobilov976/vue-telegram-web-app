@@ -2,7 +2,18 @@
     <div>
         {{ MainButton }}
         <Btn @click="onShowHide(!MainButton.show)"> {{ MainButton.show ? 'Hide Main Button' : 'Show Main Button' }} </Btn>
-        <Btn @click="onShowHideProgress(!MainButton.progress)"> {{ MainButton.progress }} </Btn>
+        <Btn @click="onShowHideProgress(!MainButton.progress)"> 
+            {{ MainButton.progress 
+                ? 'Hide Main Button Progress' 
+                : 'Show Main Button Progress' 
+            }} </Btn>
+            <Btn @click="onDisableEnable(!MainButton.disable)"> 
+            {{ MainButton.disable 
+                ? 'Disable Main Button' 
+                : 'Enable Main Button' 
+            }} </Btn>
+            <TextField @input="onSetText($event.target.value)" :label="'Main Button Text'"/>
+
     </div>
 </template>
 
@@ -10,12 +21,19 @@
 import { defineComponent, watch } from 'vue';
 import Btn from './components/Btn.vue';
 import { useMainButton } from '@/composables/useMainButton';
+import TextField from './components/TextField.vue';
 
 export default defineComponent({
     name: "App",
-    components: { Btn },
+    components: { Btn, TextField },
     setup() {
-        const { MainButton, onShowHide, onShowHideProgress } = useMainButton();
+        const { 
+            MainButton, 
+            onShowHide, 
+            onShowHideProgress,
+            onDisableEnable,
+            onSetText
+         } = useMainButton();
         watch(MainButton, (newValue) => {
             console.log(newValue);
             
@@ -24,7 +42,9 @@ export default defineComponent({
         return {
             MainButton,
             onShowHide,
-            onShowHideProgress
+            onShowHideProgress,
+            onDisableEnable,
+            onSetText
         }
     }
 })

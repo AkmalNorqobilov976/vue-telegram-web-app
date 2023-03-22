@@ -32,9 +32,27 @@ export const useMainButton = () => {
             WebAppMainButton.hideProgress();
         }
     }
+
+    const onDisableEnable = (value: boolean) => {
+        MainButton.value.disable = value;
+        if (WebAppMainButton.isActive && MainButton.value.disable) {
+            WebAppMainButton.disable();
+          } else if (!WebAppMainButton.isActive && !MainButton.value.disable) {
+            WebAppMainButton.enable();
+          }
+    }
+
+    const onSetText = (text: string) => {
+        MainButton.value.text = text;
+        console.log(text);
+        
+        WebAppMainButton.setParams(MainButton.value.text);
+    }
     return {
         MainButton,
         onShowHide,
-        onShowHideProgress
+        onShowHideProgress,
+        onDisableEnable,
+        onSetText
     }
 }
