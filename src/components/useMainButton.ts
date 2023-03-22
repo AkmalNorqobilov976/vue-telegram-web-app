@@ -11,6 +11,7 @@ export const useMainButton = () => {
         color: (WebApp.color as string),
         textColor: WebApp.textColor,
         onClick: WebApp.onClick,
+        show: false
     });
     watch(MainButton.value?.color, (newValue) => {
         WebAppMainButton.color = newValue;
@@ -28,12 +29,13 @@ export const useMainButton = () => {
     });
 
     const onToggleDisable = (value: boolean) => {
-        MainButton.value.disable = value;
-        console.log(MainButton.value.disable);
-        
-        WebAppMainButton.setParams({
-            is_active: MainButton.value.disable
-        });
+        MainButton.value.show = value;
+        console.log(MainButton.value.show);
+        if (MainButton.value.disable) {
+            WebAppMainButton.show();
+        } else {
+            WebAppMainButton.show();
+        }
     }
     return {
         MainButton,

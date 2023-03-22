@@ -1,7 +1,7 @@
 <template>
     <div>
         {{ MainButton }}
-        <Btn @click="onToggleDisable(!MainButton.disable)"> {{ MainButton.disable }} </Btn>
+        <Btn @click="onToggleDisable(!MainButton.show)"> {{ MainButton.disable }} </Btn>
     </div>
 </template>
 

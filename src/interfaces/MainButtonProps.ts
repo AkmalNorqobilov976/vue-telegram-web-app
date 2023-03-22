@@ -4,5 +4,6 @@ export interface MainButtonProps {
     disable?: boolean | any,
     onClick?: () => void,
     color?: string | any;
-    textColor?: string | any
+    textColor?: string | any,
+    show?: boolean | any
 }
