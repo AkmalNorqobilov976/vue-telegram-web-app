@@ -50,11 +50,27 @@ export const useMainButton = () => {
             text: text
         });
     }
+
+    const onSetColor = (color: string) => {
+        MainButton.value.color = color;
+        WebAppMainButton.setParams({
+            color: color
+        });
+    }
+
+    const onSetTextColor = (textColor: string) => {
+        MainButton.value.textColor = textColor;
+        WebAppMainButton.setParams({
+            text_color: textColor || WebApp.themeParams.button_text_color || '#000',
+        });
+    }
     return {
         MainButton,
         onShowHide,
         onShowHideProgress,
         onDisableEnable,
-        onSetText
+        onSetText,
+        onSetColor,
+        onSetTextColor
     }
 }

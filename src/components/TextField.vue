@@ -1,6 +1,6 @@
 <template>
     <div class="input">
-        <input class="" :placeholder="label"/>
+        <input v-bind="$attrs" class="" :placeholder="label"/>
     </div>
 </template>
 <script lang="ts">

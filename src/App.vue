@@ -14,12 +14,15 @@
             : 'Disable Main Button' 
         }} </Btn>
         <TextField @input="onSetText($event.target.value)" :label="'Main Button Text'"/>
-
+        <p class="mt-5">Background color</p>
+        <TextField type="color" value="#fff" @input="onSetColor($event.target.value)" />
+        <p class="mt-5">Text color</p>
+        <TextField type="color" value="#fff" @input="onSetTextColor($event.target.value)" />
     </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, watch } from 'vue';
+import { defineComponent, ref, watch } from 'vue';
 import Btn from './components/Btn.vue';
 import { useMainButton } from '@/composables/useMainButton';
 import TextField from './components/TextField.vue';
@@ -33,7 +36,9 @@ export default defineComponent({
             onShowHide, 
             onShowHideProgress,
             onDisableEnable,
-            onSetText
+            onSetText,
+            onSetColor,
+            onSetTextColor
          } = useMainButton();
         watch(MainButton, (newValue) => {
             console.log(newValue);
@@ -45,7 +50,9 @@ export default defineComponent({
             onShowHide,
             onShowHideProgress,
             onDisableEnable,
-            onSetText
+            onSetText,
+            onSetColor,
+            onSetTextColor
         }
     }
 })
@@ -57,8 +64,10 @@ export default defineComponent({
     font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-align: center;
     color: #2c3e50;
     margin-top: 20px;
+    .mt-5 {
+        margin-top: 20px;
+    }
 }
 </style>
