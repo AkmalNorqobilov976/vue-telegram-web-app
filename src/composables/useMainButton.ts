@@ -22,8 +22,19 @@ export const useMainButton = () => {
             WebAppMainButton.hide();
         }
     }
+
+
+    const onShowHideProgress = (value: boolean) => {
+        MainButton.value.progress = value;
+        if (MainButton.value.progress) {
+            WebAppMainButton.showProgress(false);
+        } else if (!MainButton.value.progress) {
+            WebAppMainButton.hideProgress();
+        }
+    }
     return {
         MainButton,
-        onShowHide
+        onShowHide,
+        onShowHideProgress
     }
 }
