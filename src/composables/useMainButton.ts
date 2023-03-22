@@ -15,12 +15,12 @@ export const useMainButton = () => {
     });
 
     const onShowHide = (value: boolean) => {
-        WebAppMainButton.enable();
         MainButton.value.show = value;
-        // WebAppMainButton.disable();
-        // if (MainButton.value.show) {
-        // } else if (!MainButton.value.show) {
-        // }
+        WebAppMainButton.show();
+        if (MainButton.value.show) {
+        } else if (!MainButton.value.show) {
+            WebAppMainButton.hide();
+        }
     }
     return {
         MainButton,
