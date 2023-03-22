@@ -15,7 +15,7 @@ export const useBackButton = () => {
         }
     }
 
-    const onBackButtonClick = (cb: Function) => {
+    const onBackButtonClick = (cb: any) => {
         onMounted(() => {
             WebAppBackButton.onClick(cb)
         })
