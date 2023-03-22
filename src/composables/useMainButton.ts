@@ -46,7 +46,9 @@ export const useMainButton = () => {
         MainButton.value.text = text;
         console.log(text);
         
-        WebAppMainButton.setParams(MainButton.value.text);
+        WebAppMainButton.setParams({
+            text: text
+        });
     }
     return {
         MainButton,

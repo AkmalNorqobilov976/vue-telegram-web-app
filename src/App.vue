@@ -1,18 +1,19 @@
 <template>
-    <div>
+    <div id="app">
         {{ MainButton }}
         <Btn @click="onShowHide(!MainButton.show)"> {{ MainButton.show ? 'Hide Main Button' : 'Show Main Button' }} </Btn>
         <Btn @click="onShowHideProgress(!MainButton.progress)"> 
             {{ MainButton.progress 
                 ? 'Hide Main Button Progress' 
                 : 'Show Main Button Progress' 
-            }} </Btn>
-            <Btn @click="onDisableEnable(!MainButton.disable)"> 
-            {{ MainButton.disable 
-                ? 'Disable Main Button' 
-                : 'Enable Main Button' 
-            }} </Btn>
-            <TextField @input="onSetText($event.target.value)" :label="'Main Button Text'"/>
+            }} 
+        </Btn>
+        <Btn @click="onDisableEnable(!MainButton.disable)"> 
+        {{ MainButton.disable 
+            ? 'Enable Main Button' 
+            : 'Disable Main Button' 
+        }} </Btn>
+        <TextField @input="onSetText($event.target.value)" :label="'Main Button Text'"/>
 
     </div>
 </template>
@@ -52,11 +53,12 @@ export default defineComponent({
 
 <style lang="scss">
 #app {
+    padding: 0 10px;
     font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
-    margin-top: 60px;
+    margin-top: 20px;
 }
 </style>
