@@ -14,13 +14,13 @@ export const useMainButton = () => {
         show: false
     });
 
-    WebAppMainButton.enable();
     const onShowHide = (value: boolean) => {
+        WebAppMainButton.enable();
         MainButton.value.show = value;
-        WebAppMainButton.disable();
-        if (MainButton.value.show) {
-        } else if (!MainButton.value.show) {
-        }
+        // WebAppMainButton.disable();
+        // if (MainButton.value.show) {
+        // } else if (!MainButton.value.show) {
+        // }
     }
     return {
         MainButton,
