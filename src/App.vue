@@ -39,7 +39,7 @@
             :options="['error', 'success', 'warning']"
         ></VueSelect>
         <Btn @click="onNotificationOccurred(hapTick.type)">
-            Impact Occured </Btn>
+            Notification Occurred </Btn>
     </div>
 </template>
 
