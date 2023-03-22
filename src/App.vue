@@ -1,7 +1,9 @@
 <template>
     <div>
         {{ MainButton }}
-        <Btn @click="onToggleDisable(!MainButton.show)"> {{ MainButton.disable }} </Btn>
+        <Btn @click="onShowHide(!MainButton.show)"> {{ MainButton.show ? 'Hide Main Button' : 'Show Main Button' }} </Btn>
+        <Btn @click="onSetProgress(!MainButton.progress)"> {{ MainButton.progress ? 'Hide Main Button Progress' : 'Show Main Button Progress' }} </Btn>
+        <Btn @click="onDisable(!MainButton.disable)"> {{ MainButton.disable ? 'Hide Main Button Progress' : 'Show Main Button Progress' }} </Btn>
     </div>
 </template>
 
@@ -14,7 +16,7 @@ export default defineComponent({
     name: "App",
     components: { Btn },
     setup() {
-        const { MainButton, onToggleDisable } = useMainButton();
+        const { MainButton, onShowHide, onDisable, onSetProgress } = useMainButton();
         watch(MainButton, (newValue) => {
             console.log(newValue);
             
@@ -22,7 +24,9 @@ export default defineComponent({
 
         return {
             MainButton,
-            onToggleDisable
+            onShowHide,
+            onDisable, 
+            onSetProgress
         }
     }
 })

@@ -13,32 +13,37 @@ export const useMainButton = () => {
         onClick: WebApp.onClick,
         show: false
     });
-    watch(MainButton.value?.color, (newValue) => {
-        WebAppMainButton.color = newValue;
-    });
-
-
-    watch(MainButton.value.progress, (newValue) => {
-        WebAppMainButton.progress = newValue;
-    });
-
-
-
-    watch(MainButton.value.textColor, (newValue) => {
-        WebAppMainButton.textColor = newValue;
-    });
-
-    const onToggleDisable = (value: boolean) => {
+    const onShowHide = (value: boolean) => {
         MainButton.value.show = value;
         console.log(MainButton.value.show);
         if (MainButton.value.disable) {
             WebAppMainButton.show();
         } else {
-            WebAppMainButton.show();
+            WebAppMainButton.hide();
         }
+    }
+
+    const onSetProgress = (value: boolean) => {
+        MainButton.value.progress = value;
+        if (!WebAppMainButton.isProgressVisible && MainButton.value.progress) {
+            WebAppMainButton.showProgress(false);
+          } else if (WebAppMainButton.isProgressVisible && !MainButton.value.progress) {
+            WebAppMainButton.hideProgress();
+          }
+    }
+
+    const onDisable = (value: boolean) => {
+        MainButton.value.disable = value;
+        if (WebAppMainButton.isActive && MainButton.value.disable) {
+            WebAppMainButton.disable();
+          } else if (!WebAppMainButton.isActive && !MainButton.value.disable) {
+            WebAppMainButton.enable();
+          }
     }
     return {
         MainButton,
-        onToggleDisable
+        onShowHide,
+        onSetProgress,
+        onDisable
     }
 }
